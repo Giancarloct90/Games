@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #F2994A;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #F2C94C, #F2994A);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #F2C94C, #F2994A);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+
+#title {
+    font-size: 70px;
+    color: #004F6E;
+    font-family: 'Freckle Face', cursive;
+}
+
+#divTitle {
+    margin-top: 15px;
+    margin-left: 20px;
+}
+
+#divContent {
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 15px;
+    margin: 10px;
+}
+
+#divForm,
+#divTable {
+    background-color: #F6F4E1;
+
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#divTable {
+    width: 100%;
+    height: fit-content;
+}
+
+#divForm {
+    width: 100%;
+    height: fit-content;
+}
+
+#divTable {
+    margin-left: 15px;
+}
+
+#titleNewGame {
+    text-align: center;
+    color: #004F6E;
+    font-family: 'Freckle Face', cursive;
+    font-size: 30px;
+    margin: 0;
+}
+
+.aMenu {
+    text-decoration: none;
+    color: white;
+    display: inline;
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+#divMenu {
+    margin: auto;
+}
+
+#ulMenu {
+    height: 25px;
+    padding: 5px;
+}
+
+.aMenu:hover {
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid white;
+    color: white;
+}
+
+.iconAction {
+
+    color: #42A6C6;
+}
+
+.iconAction:hover {
+    cursor: pointer;
+    color: #004F6E;
+}

@@ -1,0 +1,78 @@
+<!-- MASTER PAGES -->
+<% layout('layout/main') -%>
+
+<script src="socket.io/socket.io.js"></script>
+
+<script>
+    var socket = io();
+
+    socket.on('connect', function () {
+        console.log('Conectado al servidor');
+    });
+</script>
+
+<!-- TITLE -->
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="divTitle" class="text-center">
+                <span id="title">Games</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CONTENT -->
+<div id="divContent">
+
+    <!-- FORM -->
+    <div id="divForm">
+        <div id="divTitleNewGame" class="text-center mb-4">
+            <span id="titleNewGame">Nuevo Juego</span>
+        </div>
+        <input type="text" class="form-control mb-3" placeholder="Nombre del Juego" id="txtNombre" name="txtNombre"
+            autocomplete="off">
+        <textarea id="txtDescripcion" name="txtDescripcion" cols="30" rows="5" class="form-control mb-3"
+            placeholder="Escriba una descripcion"></textarea>
+        <div class="custom-file mb-3">
+            <input type="file" name="image" class="custom-file-input mb-2" id="customFile" required>
+            <label class="custom-file-label mb-3" for="customFile">Selecione una</label>
+        </div>
+        <label class="mb-3" style="display: none;" id="lblNotify"></label>
+        <button class="form-control btn btn-primary mb-4" id="btnInsert">Add</button>
+    </div>
+
+    <!-- TABLE -->
+    <div id="divTable">
+        <div id="divTitleNewGame" class="text-center mb-5">
+            <span id="titleNewGame">Juegos</span>
+        </div>
+        <div id="divTableContent" class="divTableContent">
+        </div>
+        <div id="divImgLoading" class="text-center" style="margin-top: 100px; display: none;">
+            <img src="img/loading.gif" alt="" style="width: 170px; height: 170px;">
+        </div>
+    </div>
+</div>
+
+<!-- SCRIPT TO RENAME THE FILE INPUT IN THE FORM -->
+<script>
+    $(document).ready(function () {
+        $('input[type="file"]').on("change", function () {
+            let filenames = [];
+            let files = document.getElementById("customFile").files;
+            if (files.length > 1) {
+                filenames.push("Total de imagenes (" + files.length + ")");
+            } else {
+                for (let i in files) {
+                    if (files.hasOwnProperty(i)) {
+                        filenames.push(files[i].name);
+                    }
+                }
+            }
+            $(this)
+                .next(".custom-file-label")
+                .html(filenames.join(","));
+        });
+    });
+</script>

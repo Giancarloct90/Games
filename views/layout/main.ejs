@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games</title>
+
+    <!-- FONTAwesome -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+
+    <!-- CSS Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrapcss/bootstrap.min.css">
+    <!-- JS jQuery -->
+    <script src="js/jquery/jquery-3.4.1.js"></script>
+
+    <!-- JS Propper -->
+    <script src="js/popperjs/popper.min.js"></script>
+
+    <!-- JS Bootstrap -->
+    <script src="js/bootstrapjs/bootstrap.min.js"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Freckle+Face&display=swap" rel="stylesheet">
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Custom Js -->
+    <script defer src="js/index.js"></script>
+</head>
+
+<body>
+    <!-- MENU NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!-- <a class="navbar-brand" href="/">INFO</a> -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <!--<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link " href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-item nav-link" href="/charts">Charts(Graficas)</a>
+            </div>
+        </div> -->
+        <div id="divMenu">
+            <ul id="ulMenu">
+                <a class="aMenu" href="/"> Nuevo Juego</a>
+                <a class="aMenu" href=""> Votar</a>
+                <a class="aMenu" href=""> Resultados</a>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- BODY -->
+    <%- body -%>
+</body>
+
+</html>
