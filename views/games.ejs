@@ -3,6 +3,9 @@
 
 <script src="socket.io/socket.io.js"></script>
 
+<!-- Custom Js -->
+<script defer src="js/index.js"></script>
+
 <script>
     var socket = io();
 
@@ -40,6 +43,7 @@
         </div>
         <label class="mb-3" style="display: none;" id="lblNotify"></label>
         <button class="form-control btn btn-primary mb-4" id="btnInsert">Add</button>
+        <!-- <button id="btnDeleteGame" links="/deleteGame?id=${game._id}" class="btn btn-danger">Borrar</button> -->
     </div>
 
     <!-- TABLE -->
@@ -75,4 +79,8 @@
                 .html(filenames.join(","));
         });
     });
+</script>
+
+<script>
+
 </script>

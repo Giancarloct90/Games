@@ -55,4 +55,31 @@ router.get('/games', async (req, res) => {
     })
 });
 
+// to delete a game
+router.post('/deleteGame', async (req, res) => {
+    let {
+        id
+    } = req.body;
+    try {
+        let deleteGameDB = await Games.findByIdAndUpdate(id, {
+            disponible: false
+        }, {
+            new: true
+        });
+        if (!deleteGameDB) {
+            res.status(500).json({
+                ok: false,
+                message: 'Server Error'
+            });
+        }
+        res.status(200).json({
+            ok: true,
+            message: 'Games deleted',
+            deleteGameDB
+        });
+    } catch (e) {
+        console.log('Error traying to delete games');
+    }
+});
+
 module.exports = router;
