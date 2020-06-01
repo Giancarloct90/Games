@@ -55,6 +55,36 @@ router.get('/games', async (req, res) => {
     })
 });
 
+// TO UPDATE A GAME
+router.post('/updateGame', async (req, res) => {
+    let id = req.query.id;
+    console.log(req.body);
+    console.log(id);
+    try {
+        let gameDB = await Games.findByIdAndUpdate(id, req.body, {
+            new: true
+        });
+        if (!gameDB) {
+            res.status(500).json({
+                ok: false,
+                message: 'Server Error'
+            });
+        }
+        res.status(200).json({
+            ok: true,
+            message: 'Games Updated',
+            gameDB
+        })
+    } catch (e) {
+        res.status(500).json({
+            ok: false,
+            message: 'Error'
+        });
+        console.log('Error trying updated a game');
+    }
+
+});
+
 // to delete a game
 router.post('/deleteGame', async (req, res) => {
     let {

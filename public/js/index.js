@@ -8,11 +8,23 @@ const customFile = document.getElementById('customFile');
 const lblNotify = document.getElementById('lblNotify');
 const divTableContent = document.getElementById('divTableContent');
 const divImgLoading = document.getElementById('divImgLoading');
+const modalClose = document.getElementById('modalClose');
+const bigModal = document.getElementById('bigModal');
+const txtNombreJuego = document.getElementById('txtNombreJuego');
+const txtDescripcionJuego = document.getElementById('txtDescripcionJuego');
+const idJuego = document.getElementById('idJuego');
+const btnCancel = document.getElementById('btnCancel');
+const btnUpdate = document.getElementById('btnUpdate');
+const divNotify = document.getElementById('divNotify');
+const divSuccess = document.getElementById('divSuccess');
 
 getAllGames();
 
 // EVENTS LISTENER
 btnInsert.addEventListener('click', insertGame);
+modalClose.addEventListener('click', closeModal);
+btnCancel.addEventListener('click', closeBTN);
+btnUpdate.addEventListener('click', updateGame);
 
 // FUNCTIONS
 // To Insert games into database
@@ -37,6 +49,7 @@ async function insertGame() {
                 txtNombre.value = '';
                 txtDescripcion.value = '';
                 customFile.value = "";
+                showNotification('GAMES SAVED!!!!', true);
             } else {
                 throw new Error;
             }
@@ -87,7 +100,7 @@ async function renderizarGames(games) {
         html += `<tr>`;
         html += `<td>${game.nombre}</td>`;
         html += `<td>${game.descripcion}</td>`;
-        html += `<td><button id="btnUpdateGame" links="${game._id}" class="btn btn-success">Ver Detalle</button> <button id="btn" links="${game._id}" class="btn btn-info">Actulizar</button> <button id="btnDeleteGame" links="${game._id}" onclick="deleteGa(this)" class="btn btn-danger">Borrar</button></td>`;
+        html += `<td><button id="btnUpdateGame" idGame="${game._id}" nombre="${game.nombre}" descripcion="${game.descripcion}" class="btn btn-success" onclick="showModal(this)">Ver Detalle</button> <button id="btnDeleteGame" links="${game._id}" onclick="deleteGa(this)" class="btn btn-danger">Borrar</button></td>`;
         // html += `<td></td>`;
         // html += `<td></td>`;
         html += `</tr>`;
@@ -124,5 +137,61 @@ async function deleteGa(elemt) {
         }
     } catch (e) {
         console.log('Error trying to delete game', e);
+    }
+}
+
+// Update a game
+function showModal(item) {
+    bigModal.classList.add('modalActive');
+    idJuego.value = item.getAttribute('idGame');
+    txtNombreJuego.value = item.getAttribute('nombre');
+    txtDescripcionJuego.value = item.getAttribute('descripcion');
+}
+
+// TO CLOSE MODAL
+function closeModal() {
+    bigModal.classList.remove('modalActive');
+}
+
+// TO CLOSE WITH THE BOTTON
+function closeBTN() {
+    bigModal.classList.remove('modalActive');
+}
+
+// TO UPDATE GAMES
+async function updateGame() {
+    let data = {
+        nombre: txtNombreJuego.value,
+        descripcion: txtDescripcionJuego.value
+    }
+    try {
+        let game = await fetch(`/updateGame?id=${idJuego.value}`, {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-type': 'application/json'
+            }
+        });
+        let gameUpdated = await game.json();
+        console.log(gameUpdated);
+        if (gameUpdated.ok) {
+            bigModal.classList.remove('modalActive');
+            getAllGames();
+        }
+    } catch (e) {
+        console.log('Error trying to update a Game');
+    }
+}
+
+// TO SHOW NOTIFICATIIION
+function showNotification(message, state) {
+    if (state) {
+        divNotify.style.display = '';
+        divSuccess.classList.add('showNotification');
+        divSuccess.innerHTML = `${message}`
+        setTimeout(function () {
+            divNotify.style.display = 'none';
+            divSuccess.classList.remove('showNotification');
+        }, 3000);
     }
 }
