@@ -17,6 +17,7 @@ const btnCancel = document.getElementById('btnCancel');
 const btnUpdate = document.getElementById('btnUpdate');
 const divNotify = document.getElementById('divNotify');
 const divSuccess = document.getElementById('divSuccess');
+const imgGame = document.getElementById('imgGame');
 
 getAllGames();
 
@@ -100,7 +101,7 @@ async function renderizarGames(games) {
         html += `<tr>`;
         html += `<td>${game.nombre}</td>`;
         html += `<td>${game.descripcion}</td>`;
-        html += `<td><button id="btnUpdateGame" idGame="${game._id}" nombre="${game.nombre}" descripcion="${game.descripcion}" class="btn btn-success" onclick="showModal(this)">Ver Detalle</button> <button id="btnDeleteGame" links="${game._id}" onclick="deleteGa(this)" class="btn btn-danger">Borrar</button></td>`;
+        html += `<td><button id="btnUpdateGame" idGame="${game._id}" nombre="${game.nombre}" descripcion="${game.descripcion}" imgGames="${game.imagen}" class="btn btn-success mb-2" onclick="showModal(this)">Detalles</button> <button id="btnDeleteGame" links="${game._id}" onclick="deleteGa(this)" class="btn btn-danger">Borrar</button></td>`;
         // html += `<td></td>`;
         // html += `<td></td>`;
         html += `</tr>`;
@@ -146,6 +147,7 @@ function showModal(item) {
     idJuego.value = item.getAttribute('idGame');
     txtNombreJuego.value = item.getAttribute('nombre');
     txtDescripcionJuego.value = item.getAttribute('descripcion');
+    imgGame.setAttribute("src", `img/games/${item.getAttribute('imgGames')}`);
 }
 
 // TO CLOSE MODAL

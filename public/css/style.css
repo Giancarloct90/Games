@@ -154,3 +154,38 @@ body {
 }
 
 /* ************************************************ */
+
+/* VOTACIONES */
+/* ***************************************************** */
+.divCard {
+    width: 250px;
+    height: 600px;
+    margin-bottom: 40px;
+
+}
+
+#divCardImg {
+    background-color: teal;
+    width: auto;
+    height: 60%;
+}
+
+#divCardContent {
+    padding: 10px;
+    width: auto;
+    height: 40%;
+    background-color: white;
+}
+
+#titleGame {
+    font-size: 25px;
+    color: #004F6E;
+    font-family: 'Freckle Face', cursive;
+}
+
+#titleDescripcion {
+    font-weight: bolder;
+    font-size: 20px;
+}
+
+/* ***************************************************** */
