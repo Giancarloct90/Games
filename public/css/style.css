@@ -141,8 +141,7 @@ body {
 
 /* NOTIFICATION */
 /* ************************************************ */
-.divSuccess,
-.divFailed {
+.divNotify {
     visibility: hidden;
     opacity: 0;
     transition: visibility 0s, opacity 0.5s;
@@ -186,6 +185,19 @@ body {
 #titleDescripcion {
     font-weight: bolder;
     font-size: 20px;
+}
+
+#sVotosTitle {
+    font-size: 35px;
+    color: #004F6E;
+    font-family: 'Freckle Face', cursive;
+}
+
+#sVotos {
+    font-size: 50px;
+    color: #004F6E;
+    font-family: 'Freckle Face', cursive;
+
 }
 
 /* ***************************************************** */

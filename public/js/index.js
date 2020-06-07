@@ -16,7 +16,7 @@ const idJuego = document.getElementById('idJuego');
 const btnCancel = document.getElementById('btnCancel');
 const btnUpdate = document.getElementById('btnUpdate');
 const divNotify = document.getElementById('divNotify');
-const divSuccess = document.getElementById('divSuccess');
+const divNotify2 = document.getElementById('divNotify2');
 const imgGame = document.getElementById('imgGame');
 
 getAllGames();
@@ -54,9 +54,8 @@ async function insertGame() {
             } else {
                 throw new Error;
             }
-
         } catch (e) {
-            console.log('Error trying inserted');
+            console.log('Error trying inserted', e);
         }
     } else {
         lblNotify.style.color = 'red';
@@ -189,11 +188,23 @@ async function updateGame() {
 function showNotification(message, state) {
     if (state) {
         divNotify.style.display = '';
-        divSuccess.classList.add('showNotification');
-        divSuccess.innerHTML = `${message}`
+        divNotify2.classList.add('alert');
+        divNotify2.classList.add('alert-success');
+        divNotify2.innerHTML = `${message}`
+        divNotify2.classList.add('showNotification');
         setTimeout(function () {
+            divNotify2.classList.remove('showNotification');
             divNotify.style.display = 'none';
-            divSuccess.classList.remove('showNotification');
+        }, 3000);
+    } else {
+        divNotify.style.display = '';
+        divNotify2.classList.add('alert');
+        divNotify2.classList.add('alert-danger');
+        divNotify2.innerHTML = `${message}`
+        divNotify2.classList.add('showNotification');
+        setTimeout(function () {
+            divNotify2.classList.remove('showNotification');
+            divNotify.style.display = 'none';
         }, 3000);
     }
 }

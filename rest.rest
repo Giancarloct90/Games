@@ -1,0 +1,10 @@
+POST http://localhost:3000/vote
+Content-Type: application/json
+
+{
+    "id": "5ed979abd0326e5a87a39b0d",
+    "count": 2
+}
+###
+GET http://localhost:3000/games
+###

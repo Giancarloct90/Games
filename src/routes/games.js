@@ -6,6 +6,7 @@ router.get('/', (req, res) => {
     res.render('games');
 });
 
+// TO INSERT GAMES IN DB
 router.post('/game', async (req, res) => {
     let {
         nombre,

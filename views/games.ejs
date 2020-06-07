@@ -1,21 +1,13 @@
 <!-- MASTER PAGES -->
 <% layout('layout/main') -%>
 
-<script src="socket.io/socket.io.js"></script>
-
 <!-- Custom Js -->
+<!-- CUSTOM JS -->
 <script defer src="js/index.js"></script>
 
-<script>
-    var socket = io();
-
-    socket.on('connect', function () {
-        console.log('Conectado al servidor');
-    });
-</script>
-
-<!-- TITLE -->
 <div class="container">
+
+    <!-- TITLE -->
     <div class="row">
         <div class="col-md-12">
             <div id="divTitle" class="text-center">
@@ -23,18 +15,18 @@
             </div>
         </div>
     </div>
+
+    <!-- NOTIFICATION -->
     <div class="row">
         <div class="col-md-12">
             <div id="divNotify" style="display: none;">
-                <div class="alert alert-success divSuccess" role="alert" id="divSuccess">
-                    This is a danger alert—check it out!
-                </div>
-                <div class="alert alert-danger divFailed" role="alert" id="divFailed">
+                <div class="divNotify" role="alert" id="divNotify2">
                     This is a danger alert—check it out!
                 </div>
             </div>
         </div>
     </div>
+
 </div>
 
 
